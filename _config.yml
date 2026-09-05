@@ -1,0 +1,32 @@
+title: "45Drives Open Source"
+tagline: "An independent showcase of the open-source stack behind 45Drives storage"
+description: >
+  Ceph, ZFS, and Cockpit/Houston UI are the real, auditable, community-driven technologies
+  underneath 45Drives' storage servers. This is an independent, community-built site exploring
+  that stack — not an official 45Drives property.
+lang: "en"
+url: "https://45drives.org"
+baseurl: ""
+
+markdown: kramdown
+permalink: /:title/
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+seo:
+  type: WebSite
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "page"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - node_modules

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% seo title=true %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="{{ '/' | relative_url }}">45Drives<span>.org</span></a>
+      <nav>
+        <a href="{{ '/ceph/' | relative_url }}">Ceph</a>
+        <a href="{{ '/zfs/' | relative_url }}">ZFS</a>
+        <a href="{{ '/cockpit/' | relative_url }}">Houston UI</a>
+        <a href="{{ '/build-your-own/' | relative_url }}">Build Your Own</a>
+        <a href="{{ '/about/' | relative_url }}">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>
+        <strong>Independent, community-built site.</strong> Not an official 45Drives property
+        and not affiliated with, endorsed by, or operated by 45Drives Inc. or Protocase Inc.
+        For official information, visit
+        <a href="https://www.45drives.com" rel="nofollow">45drives.com</a>.
+        See the <a href="{{ '/about/' | relative_url }}">About</a> page for details.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
