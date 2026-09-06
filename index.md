@@ -56,3 +56,5 @@ proposition than most of the storage industry, and it's worth understanding on i
     open-source Cockpit project, extended by 45Drives' own open-source plugins.</p>
   </div>
 </div>
+
+<p><a href="{{ '/technology/' | relative_url }}">Browse the full technology section →</a></p>

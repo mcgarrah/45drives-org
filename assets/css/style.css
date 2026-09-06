@@ -46,13 +46,48 @@ a:hover { text-decoration: underline; }
   color: var(--ink);
 }
 .brand span { color: var(--accent); }
-.site-header nav a {
+.site-header nav {
+  display: flex;
+  align-items: center;
+}
+.site-header nav > a,
+.site-header nav > .nav-item {
   margin-left: 1.25rem;
+}
+.site-header nav > a:first-child,
+.site-header nav > .nav-item:first-child { margin-left: 0; }
+.site-header nav a {
   color: var(--ink-soft);
   font-weight: 500;
 }
-.site-header nav a:first-child { margin-left: 0; }
 .site-header nav a:hover { color: var(--accent); text-decoration: none; }
+
+.nav-item { position: relative; }
+.nav-item .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 0.4rem 0 0;
+  padding: 0.4rem 0;
+  list-style: none;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  min-width: 180px;
+  z-index: 10;
+}
+.nav-item:hover .dropdown,
+.nav-item:focus-within .dropdown {
+  display: block;
+}
+.nav-item .dropdown li a {
+  display: block;
+  padding: 0.45rem 1rem;
+  white-space: nowrap;
+}
+.nav-item .dropdown li a:hover { background: var(--paper-alt); }
 
 main.wrap {
   padding-top: 2.5rem;

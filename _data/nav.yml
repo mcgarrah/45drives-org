@@ -1,0 +1,21 @@
+# Site navigation, grouped by section. Add new pages here as the site grows past a flat
+# top-level list.
+#
+# Each top-level entry supports:
+#   title:      link text
+#   url:        link target
+#   collection: (optional) name of a Jekyll collection whose entries become a dropdown
+#               under this item -- e.g. new files dropped in _technology/ show up here
+#               automatically, no nav edits needed.
+#   children:   (optional) a static list of {title, url} entries, for sections that
+#               aren't backed by a collection.
+
+- title: Technology
+  url: /technology/
+  collection: technology
+
+- title: Build Your Own
+  url: /build-your-own/
+
+- title: About
+  url: /about/
