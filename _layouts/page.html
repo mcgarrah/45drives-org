@@ -14,7 +14,7 @@
         {% for item in site.data.nav %}
           {% assign kids = nil %}
           {% if item.collection %}
-            {% assign kids = site[item.collection] | sort: "title" %}
+            {% assign kids = site[item.collection] | sort_natural: "title" %}
           {% elsif item.children %}
             {% assign kids = item.children %}
           {% endif %}

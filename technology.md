@@ -11,7 +11,7 @@ open-source projects. This section covers each piece on its own: what it is, why
 and where to see the real code.
 
 <div class="grid">
-{% assign sorted_pages = site.technology | sort: "title" %}
+{% assign sorted_pages = site.technology | sort_natural: "title" %}
 {% for item in sorted_pages %}
   <div class="card">
     <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
