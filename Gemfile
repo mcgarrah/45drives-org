@@ -8,3 +8,7 @@ group :jekyll_plugins do
 end
 
 gem "webrick", "~> 1.9.1"
+
+group :development do
+  gem "html-proofer", "~> 5.0"
+end
