@@ -156,6 +156,13 @@ main.wrap {
   margin: 1.5rem 0;
 }
 
+.page__comments {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+.giscus, .giscus-frame { width: 100%; }
+
 .site-footer {
   border-top: 1px solid var(--line);
   color: var(--ink-soft);

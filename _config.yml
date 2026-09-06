@@ -19,6 +19,22 @@ plugins:
 seo:
   type: WebSite
 
+# GitHub Discussions-based commenting (giscus.app). Renders on every page by default;
+# set `comments: false` in a page's front matter to opt out (e.g. about.md, legal pages).
+giscus:
+  repo: mcgarrah/45drives-org
+  repo_id: R_kgDOUQOOuA
+  category: Announcements
+  category_id: DIC_kwDOUQOOuM4DFA_0
+  mapping: pathname
+  strict: 0
+  reactions_enabled: 1
+  emit_metadata: 0
+  input_position: bottom
+  theme: preferred_color_scheme
+  lang: en
+  loading: lazy
+
 # The `technology` collection holds one page per open-source component of the stack
 # (Ceph, ZFS, Cockpit/Houston UI today; Samba, NFS, S3/RGW, monitoring, etc. can be
 # added later just by dropping a new file in _technology/ — no layout/nav code changes
