@@ -83,16 +83,18 @@ direct, encouraging response to that problem, whatever its current adoption look
 
 **Not everything in this "open source" repository has a public repository, though** — checked
 package-by-package against the [45Drives GitHub org](https://github.com/orgs/45Drives/repositories).
-Several packages — `45drives-audit-tool`, `45drives-tools`, `cockpit-alerts`,
-`cockpit-storage-encryption`, `cockpit-super-simple-setup`, `proxmox-kms-bridge`,
-`vault-dmkey`, `wireshield`, and the branding/hardware-variant packages — currently have no
-matching GitHub repo. But "no repo" turned out not to mean "unreadable": actually extracting
-several of these `.deb` files directly shows plain, readable JavaScript, Python, Perl, and
-shell scripts inside — no formal version history or stated license, but not a black box
-either. **Only two, checked directly, turned out to be genuinely compiled and unreadable**:
-`vault-dmkey` and `45drives-audit-tool`, both real ELF binaries. See
-[Storage Encryption & Key Management](/storage-encryption/), [WireGuard](/wireguard/), and
-[STIG Hardening](/stig-hardening/) for the specifics on each.
+Several packages — `45drives-audit-tool`, `cockpit-alerts`, `cockpit-storage-encryption`,
+`cockpit-super-simple-setup`, `proxmox-kms-bridge`, `vault-dmkey`, `wireshield`, and the
+branding/hardware-variant packages — currently have no matching GitHub repo. But "no repo"
+turned out not to mean "unreadable": actually extracting several of these `.deb` files
+directly shows plain, readable JavaScript, Python, Perl, and shell scripts inside — no formal
+version history or stated license, but not a black box either. **Only two, checked directly,
+turned out to be genuinely compiled and unreadable**: `vault-dmkey` and `45drives-audit-tool`,
+both real ELF binaries. See [Storage Encryption & Key Management](/storage-encryption/),
+[WireGuard](/wireguard/), and [STIG Hardening](/stig-hardening/) for the specifics on each.
+
+*(`45drives-tools` was initially miscategorized as having no public repo — see the full
+mapping below for the correction.)*
 
 ## Cross-referencing the RPM repository against the Debian one
 
@@ -146,6 +148,66 @@ build (unlike Debian's `Packages` file, which only exposes the current one), and
 *newest* el9 build against trixie shows them landing on the same versions: `cockpit-alerts`
 is `4.0.25` on both, `45drives-audit-tool` is `2.2.7` on both. The RPM repository's metadata
 just happens to expose more history, not less currency.
+
+## Mapping every package to where its source actually lives
+
+Combining both audits and checking every distinct package (across both Debian and RPM) against
+the [45Drives GitHub org](https://github.com/orgs/45Drives/repositories) — including, this
+time, reading fork metadata and actual repo contents, not just matching names — sorts cleanly
+into four groups.
+
+**1. Original 45Drives code, with its own public repository:**
+
+| Package(s) | Repository |
+| --- | --- |
+| `cockpit-2fa` | [`cockpit-2FA`](https://github.com/45Drives/cockpit-2FA) |
+| `cockpit-benchmark` | [`cockpit-benchmark`](https://github.com/45Drives/cockpit-benchmark) |
+| `cockpit-file-sharing` | [`cockpit-file-sharing`](https://github.com/45Drives/cockpit-file-sharing) |
+| `cockpit-identities` | [`cockpit-identities`](https://github.com/45Drives/cockpit-identities) |
+| `cockpit-navigator` | [`cockpit-navigator`](https://github.com/45Drives/cockpit-navigator) |
+| `cockpit-scheduler` | [`cockpit-scheduler`](https://github.com/45Drives/cockpit-scheduler) |
+| `cockpit-zfs` | [`cockpit-zfs`](https://github.com/45Drives/cockpit-zfs) |
+| `cockpit-45drives-hardware` | [`cockpit-hardware`](https://github.com/45Drives/cockpit-hardware) |
+| `45drives-tools` | [`tools`](https://github.com/45Drives/tools) — its own `manifest.json` names itself `45drives-tools`, GPL-3.0+ |
+| `cockpit-s3-browser` | [`cockpit-S3ObjectBroswer`](https://github.com/45Drives/cockpit-S3ObjectBroswer) (repo name has a typo; its README correctly says `cockpit-s3-browser`) |
+| `haproxy-ansible`, `iscsi-ansible`, `nfs-ansible`, `samba-ansible` | matching repos of the same name |
+| `serial45d`, `python3-libzfs` | matching repos of the same name |
+
+**2. Built from a 45Drives *fork* of an upstream project** — publicly viewable, including
+45Drives' own changes, but not original 45Drives IP:
+
+| Package(s) | Fork | Upstream |
+| --- | --- | --- |
+| `cockpit`, `cockpit-bridge`, `cockpit-ws`, `cockpit-system`, `cockpit-storaged`, `cockpit-packagekit`, `cockpit-doc`, `cockpit-tests` | [`45Drives/cockpit`](https://github.com/45Drives/cockpit) | [`cockpit-project/cockpit`](https://github.com/cockpit-project/cockpit) |
+| `cephfs-shell`, `cockpit-ceph` | [`45Drives/ceph`](https://github.com/45Drives/ceph) | [`ceph/ceph`](https://github.com/ceph/ceph) |
+| `ceph-ansible2` | presumably [`45Drives/ceph-ansible`](https://github.com/45Drives/ceph-ansible) | [`ceph/ceph-ansible`](https://github.com/ceph/ceph-ansible) — though no branch actually named "2" was found; the newer internal rewrite this package describes may not be pushed publicly yet |
+
+**3. Pure upstream repackaging** — correctly has no 45Drives repository, because the real
+source lives at the upstream project's own home, not because it's hidden:
+
+| Package family | Real upstream home |
+| --- | --- |
+| `samba`, `samba-client`, `samba-common`, `samba-libs`, `samba-winbind`, `python3-samba`, `libtalloc`, `libtdb`, `libtevent`, `libwbclient`, `libnetapi`, `libldb`/`python3-ldb`, `ctdb`, `samba-vfs-cephfs`, `samba-vfs-iouring` | [`samba-team/samba`](https://github.com/samba-team/samba) |
+| `zfs`, `zfs-dkms`, `zfs-dracut`, `libzfs5`, `libnvpair3`, `libuutil3`, `libzpool5`, `python3-pyzfs` | [`openzfs/zfs`](https://github.com/openzfs/zfs) |
+| `scst-dkms`, `scstadmin` | [scst.sourceforge.net](http://scst.sourceforge.net/) (predates GitHub-centric hosting) |
+| `rclone` | [`rclone/rclone`](https://github.com/rclone/rclone) |
+| `smartmontools` | [smartmontools.org](https://www.smartmontools.org) |
+| `mpi3mr-dkms` | mainlined directly in the Linux kernel itself |
+| `python3-google-auth-oauthlib` | Google's own OAuth library, just a dependency |
+
+**4. No public source found anywhere** — checked against the GitHub org, and where relevant
+against the specific upstream project's own tree:
+
+`45drives-audit-tool`, `vault-dmkey` (both confirmed compiled ELF binaries), `proxmox-kms-bridge`,
+`wireshield`, `cockpit-alerts`, `cockpit-storage-encryption`, `cockpit-super-simple-setup`,
+`cockpit-45drives-branding`, `cockpit-45drives-audit`, `houston-broadcaster`, and
+`samba-vfs-snapshield` (a compiled `.so` with no matching source in Samba's own tree either —
+see [Samba](/samba/)). `niccli`, a Broadcom NIC-management CLI, is a hardware vendor's own tool
+and was never expected to be open regardless.
+
+The honest summary: most of what makes this stack *distinctive* — the Houston UI modules, the
+Ansible automation, the storage tooling — really is open, and the handful of exceptions are
+consistently small, single-purpose utilities, not core functionality.
 
 ## What's not covered
 
