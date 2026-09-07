@@ -48,9 +48,9 @@ package list, not assumed:
 | [`cockpit-2FA`](https://github.com/45Drives/cockpit-2FA) | Two-factor authentication for Houston UI logins | Public |
 | [`cockpit-autotier-status`](https://github.com/45Drives/cockpit-autotier-status) | Displays live status for [`autotier`](/autotier/) | Public |
 | [`houston-common`](https://github.com/45Drives/houston-common) | The shared library the other modules are built on — actively updated, not a one-off | Public |
-| `cockpit-super-simple-setup` | A setup wizard specifically for simplifying initial 45Drives server configuration | **No public repo found** |
-| `cockpit-alerts` | An alerts manager built into Houston UI itself | **No public repo found** |
-| `cockpit-storage-encryption`, `cockpit-45drives-hardware`, `cockpit-45drives-branding` | [Storage encryption](/storage-encryption/) management; hardware/branding variants | **No public repo found** |
+| `cockpit-super-simple-setup` | A setup wizard specifically for simplifying initial 45Drives server configuration | No public repo, but readable JS/TS in the package |
+| `cockpit-alerts` | An alerts manager built into Houston UI itself | No public repo, but readable JS/Python in the package |
+| `cockpit-storage-encryption`, `cockpit-45drives-hardware`, `cockpit-45drives-branding` | [Storage encryption](/storage-encryption/) management; hardware/branding variants | No public repo |
 
 ## Why the "quick and easy show" matters
 
@@ -58,9 +58,12 @@ Distributed storage and copy-on-write filesystems are genuinely complex under th
 complexity is exactly *why* the industry has historically sold them wrapped in expensive,
 proprietary management consoles you had to trust blindly. Houston UI makes the case that you
 don't have to trade transparency for usability: the dashboard is friendly enough for day-to-day
-administration, and most of the modules behind it are public source you (or anyone) can read —
-though, as the table above shows, not every single module currently is. Worth checking for
-yourself rather than assuming, which is exactly what this table does.
+administration, and most of the modules behind it are public source you (or anyone) can read.
+A few aren't published as a formal GitHub repo — but extracting those packages directly (see
+[Storage Encryption](/storage-encryption/) and [WireGuard](/wireguard/)) shows most of *those*
+are still plain, readable JavaScript and Python, just not published with version history.
+Worth checking for yourself rather than assuming either way, which is exactly what this table
+and the pages it links to are for.
 
 ## See it yourself
 

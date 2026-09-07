@@ -36,7 +36,10 @@ requirement alongside OS-level hardening in regulated environments. Separately, 
 publishes `45drives-audit-tool`, described in its own package metadata as running "a
 collection of system-tuning checks" and writing results to a TSV file — a lighter-weight,
 general system-health audit rather than a formal STIG check. Unlike the STIG overlay repo and
-`sedutil`, this one doesn't currently have a public source repository.
+`sedutil`, this one doesn't have a public source repository — and unlike most of the
+undocumented packages elsewhere on this site, this one genuinely is opaque: extracting the
+actual `.deb` shows a stripped, compiled ELF binary with no accompanying source, not a
+readable script.
 
 ## Why that matters if you're evaluating storage
 

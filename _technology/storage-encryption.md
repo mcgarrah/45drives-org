@@ -34,14 +34,18 @@ than storing them locally on the hypervisor.
 
 ## An honest note on this specific corner of the stack
 
-Unlike most of the technology covered on this site, **the 45Drives-authored integration
-packages here — `cockpit-storage-encryption`, `proxmox-kms-bridge`, and `vault-dmkey` — don't
-have a public source repository** as of this writing (no matching repo exists in the public
-[45Drives GitHub org](https://github.com/orgs/45Drives/repositories)). The underlying
-primitives they orchestrate (LUKS, OpenBao) are open source and independently auditable; the
-specific glue code tying them into Houston UI currently is not. Worth knowing if "open source"
-specifically (not just "works with open source tools") matters for your evaluation of this
-particular piece.
+None of these three packages — `cockpit-storage-encryption`, `proxmox-kms-bridge`,
+`vault-dmkey` — have a public source repository in the
+[45Drives GitHub org](https://github.com/orgs/45Drives/repositories). But "no public repo"
+turned out not to mean "unreadable" for two of the three: extracting the actual `.deb`
+packages directly shows `cockpit-storage-encryption` is plain JavaScript and Python
+(`zfs_connector.py`), and `proxmox-kms-bridge` is Perl modules (`KeyProvider.pm`,
+`SecureVM.pm`) and shell scripts — fully human-readable, just not published with formal
+version history or a stated license. `vault-dmkey`, however, **is a genuine compiled binary**
+(a statically-linked ELF executable) — that one really is opaque without decompiling it. Worth
+the distinction: unpublished-but-readable source is a documentation/transparency gap;
+compiled-and-unreadable is a different, stronger claim, and only one of these three packages
+actually is that.
 
 ## Why that matters if you're evaluating storage
 

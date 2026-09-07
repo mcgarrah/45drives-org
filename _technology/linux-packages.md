@@ -81,16 +81,18 @@ If you've read the [Build Your Own](/build-your-own/) page, you'll know standing
 from scratch is real, documented friction — a purpose-built setup-simplification module is a
 direct, encouraging response to that problem, whatever its current adoption looks like.
 
-**Not everything in this "open source" repository is actually open source, though.** Checked
-package-by-package against the [45Drives GitHub org](https://github.com/orgs/45Drives/repositories):
-most packages here map to a public repository, but several — `45drives-audit-tool`,
-`45drives-tools`, `cockpit-alerts`, `cockpit-storage-encryption`, `cockpit-super-simple-setup`
-itself, `proxmox-kms-bridge`, `vault-dmkey`, `wireshield`, and the branding/hardware-variant
-packages — currently do not. That doesn't make them bad tools, and several of them wrap
-genuinely open technology underneath ([WireGuard](/wireguard/), LUKS, [OpenBao](/storage-encryption/)) —
-but the specific 45Drives integration code for these isn't itself public source right now,
-unlike the majority of what's covered on this site. Worth knowing the difference between
-"distributed alongside open source" and "is open source" before assuming either way.
+**Not everything in this "open source" repository has a public repository, though** — checked
+package-by-package against the [45Drives GitHub org](https://github.com/orgs/45Drives/repositories).
+Several packages — `45drives-audit-tool`, `45drives-tools`, `cockpit-alerts`,
+`cockpit-storage-encryption`, `cockpit-super-simple-setup`, `proxmox-kms-bridge`,
+`vault-dmkey`, `wireshield`, and the branding/hardware-variant packages — currently have no
+matching GitHub repo. But "no repo" turned out not to mean "unreadable": actually extracting
+several of these `.deb` files directly shows plain, readable JavaScript, Python, Perl, and
+shell scripts inside — no formal version history or stated license, but not a black box
+either. **Only two, checked directly, turned out to be genuinely compiled and unreadable**:
+`vault-dmkey` and `45drives-audit-tool`, both real ELF binaries. See
+[Storage Encryption & Key Management](/storage-encryption/), [WireGuard](/wireguard/), and
+[STIG Hardening](/stig-hardening/) for the specifics on each.
 
 ## What's not covered
 

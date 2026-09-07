@@ -21,11 +21,14 @@ managed capability alongside storage, sharing, and monitoring.
 
 ## An honest note, same as elsewhere on this site
 
-As with [storage encryption](/storage-encryption/), the `wireshield` integration package
-itself doesn't currently have a public source repository in the
-[45Drives GitHub org](https://github.com/orgs/45Drives/repositories) — WireGuard the protocol
-is open source and in the Linux kernel; the specific Houston UI wrapper around it is not
-(publicly) at this time.
+The `wireshield` integration package doesn't have a public source repository in the
+[45Drives GitHub org](https://github.com/orgs/45Drives/repositories) — but it's worth being
+precise about what that actually means here. Extracting the real `.deb` package shows
+`wireshield` is JavaScript for the UI plus **Python** (`main.py`, `enrollment.py`,
+`dns_peer_agent.py`, `platform_enrollment.py`) and shell scripts for the backend — no compiled
+binaries at all. It's genuinely readable, just not published with version history or a stated
+license on GitHub. WireGuard itself, underneath all of it, is open source and in the Linux
+kernel regardless.
 
 ## Why that matters if you're evaluating storage
 
