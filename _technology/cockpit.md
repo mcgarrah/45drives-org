@@ -19,8 +19,8 @@ plugins for storage-specific tasks.
 
 ## What you actually get in the dashboard
 
-- **File sharing** — configure SMB, NFS, and (on supported backends) S3 shares from a
-  browser, without hand-editing `smb.conf` or `/etc/exports`.
+- **File and block sharing** — configure SMB, NFS, [iSCSI](/iscsi/), and (on supported
+  backends) S3 shares from a browser, without hand-editing `smb.conf` or `/etc/exports`.
 - **ZFS management** — create pools, manage datasets, schedule snapshots, and watch pool
   health, all visually.
 - **Ceph deployment** — bring up single-node or multi-node Ceph clusters through a guided
