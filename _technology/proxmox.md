@@ -26,7 +26,10 @@ open-source stack, not two vendors' products duct-taped together.
 paired with Ceph for the underlying storage — VM and container workloads run on the same
 cluster that also serves as a self-healing, distributed storage pool. That's the same Ceph
 described on the [Ceph page](/ceph/), just consumed by Proxmox's virtualization layer instead
-of (or in addition to) file/object sharing.
+of (or in addition to) file/object sharing. For cluster-wide visibility, 45Drives also tracks
+[Pulse](https://github.com/45Drives/Pulse) — an open-source, real-time monitoring dashboard
+for Proxmox VE (originally created by [rcourtman](https://github.com/rcourtman/Pulse)) that
+shows metrics across every node in a cluster from one screen.
 
 ## Why that matters if you're evaluating storage
 

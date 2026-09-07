@@ -43,6 +43,10 @@ to:
 | [`cockpit-hardware`](https://github.com/45Drives/cockpit-hardware) | Hardware health monitoring for 45Drives storage servers |
 | [`cockpit-benchmark`](https://github.com/45Drives/cockpit-benchmark) | Built-in storage benchmarking |
 | [`cockpit-ceph-deploy`](https://github.com/45Drives/cockpit-ceph-deploy) | Guided Ceph cluster deployment via Ansible |
+| [`cockpit-scheduler`](https://github.com/45Drives/cockpit-scheduler) | All-in-one task scheduling module |
+| [`cockpit-2FA`](https://github.com/45Drives/cockpit-2FA) | Two-factor authentication for Houston UI logins |
+| [`cockpit-autotier-status`](https://github.com/45Drives/cockpit-autotier-status) | Displays live status for [`autotier`](/autotier/) |
+| [`houston-common`](https://github.com/45Drives/houston-common) | The shared library the other modules are built on — actively updated, not a one-off |
 
 ## Why the "quick and easy show" matters
 

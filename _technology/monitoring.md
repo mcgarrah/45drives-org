@@ -28,6 +28,13 @@ that deploy Prometheus, Alertmanager, and Grafana together, pre-wired to collect
 from scratch, 45Drives automated the deployment of tools the broader industry already
 standardized on.
 
+That's backed by purpose-built Prometheus exporters 45Drives publishes for the parts of the
+stack that don't have off-the-shelf metrics already: [`zfs_exporter`](https://github.com/45Drives/zfs_exporter),
+[`autotier_exporter`](https://github.com/45Drives/autotier_exporter) for [autotier](/autotier/)
+tiering activity, [`radosgw_usage_exporter`](https://github.com/45Drives/radosgw_usage_exporter)
+for [Ceph RGW/S3](/rados-gateway/) usage, and [`cephgeorep_exporter`](https://github.com/45Drives/cephgeorep_exporter)
+for CephFS remote-backup status.
+
 ## Why that matters if you're evaluating storage
 
 - **No dashboard lock-in.** Metrics live in Prometheus's standard format — queryable,

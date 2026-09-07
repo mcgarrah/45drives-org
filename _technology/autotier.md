@@ -31,8 +31,17 @@ verify exactly how the tiering decisions get made.
 This is the clearest evidence on this site that 45Drives' open-source commitment isn't just
 "we chose free software to cut costs" — it's a two-way relationship. They consume Ceph, ZFS,
 Samba, Cockpit, and Proxmox from their respective communities, and they give back tools of
-their own under the same open terms. That's a meaningfully different posture than a vendor
-who only *uses* open source internally while keeping their own value-add proprietary.
+their own under the same open terms — [`45Flow`](/45flow/) is the other clear example. That's
+a meaningfully different posture than a vendor who only *uses* open source internally while
+keeping their own value-add proprietary.
+
+## A related approach worth knowing about
+
+`autotier` moves whole files between tiers based on access patterns. A different technique —
+block-level caching, where a fast tier transparently accelerates a slower one without moving
+files wholesale — is handled by [Open CAS](https://github.com/Open-CAS/open-cas-linux), which
+45Drives also tracks via an [Ansible deployment role](https://github.com/45Drives/open-cas-ansible)
+(Open CAS itself is an Intel-originated project, not a 45Drives creation).
 
 ## Learn more
 
@@ -40,4 +49,4 @@ who only *uses* open source internally while keeping their own value-add proprie
   releases, open for anyone to use or contribute to
 
 See [Ceph](/ceph/) and [ZFS](/zfs/) for the storage foundations `autotier` typically sits on
-top of.
+top of, or [45Flow](/45flow/) for 45Drives' other original open-source project.

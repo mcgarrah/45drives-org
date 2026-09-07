@@ -30,7 +30,10 @@ ZFS is the filesystem underneath 45Drives' single-server storage systems (the St
 and hybrid lines), managed through the open-source `cockpit-zfs-manager` module in Houston UI
 — pool creation, dataset management, snapshot scheduling, and health monitoring, all from a
 web dashboard rather than the command line (though the command line is always still there if
-you want it).
+you want it). For off-box backup and replication, 45Drives also tracks
+[`znapzend`](https://github.com/45Drives/znapzend) — an established open-source ZFS
+backup/replication tool (originally by [Oetiker+Partner](https://github.com/oetiker/znapzend),
+not a 45Drives creation) with remote-target and `mbuffer` support for efficient transfer.
 
 ## Why that matters if you're evaluating storage
 
