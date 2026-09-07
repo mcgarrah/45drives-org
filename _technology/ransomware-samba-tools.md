@@ -42,6 +42,14 @@ architecture described on the [Samba](/samba/) page: SnapShield is packaged and 
 an actual Samba VFS module through the same repository infrastructure as everything else on
 this site, not a separate agent or appliance bolted on beside Samba.
 
+Unlike this honeypot tool, though, SnapShield's own module isn't open: extracting the actual
+package shows a stripped, compiled `.so` file with no public source anywhere — checked directly
+against both the [45Drives GitHub org](https://github.com/orgs/45Drives/repositories) and
+Samba's own upstream source tree (where its open-source sibling VFS modules, `vfs_ceph.c` and
+`vfs_io_uring.c`, genuinely do live). That's expected for a commercial product, and consistent
+with everything else this site says about being precise on what's actually open versus what
+isn't — SnapShield is a real, integrated Samba module, just not one you can read.
+
 ## Why that matters if you're evaluating storage
 
 - **The concept is provable, not proprietary magic.** You can read exactly how a

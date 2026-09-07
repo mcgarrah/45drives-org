@@ -33,11 +33,22 @@ as *"Samba VFS module for Snapshield integration."*
 Two more VFS modules in that same repository round out the picture: `samba-vfs-cephfs`
 integrates Samba directly with [CephFS](/ceph/) at the VFS layer (rather than mounting CephFS
 and re-exporting it), and `samba-vfs-iouring` wires Samba into Linux's `io_uring` asynchronous
-I/O interface for lower-overhead file operations. And for sites that can't tolerate a single
-Samba server as a point of failure, the repository also carries `ctdb` — the standard clustered
-implementation of Samba's TDB database — meaning Samba itself can run in a clustered,
-highly-available configuration, the same story [iSCSI](/iscsi/) tells with its Pacemaker/
-Corosync-based clustered mode.
+I/O interface for lower-overhead file operations. Both are genuinely open source: checked
+directly against Samba's own upstream source tree, `vfs_ceph.c` and `vfs_io_uring.c` both exist
+in [`samba-team/samba`](https://github.com/samba-team/samba) — these are Samba's own official
+modules, just packaged separately, not 45Drives inventions. `samba-vfs-snapshield` sits in the
+same repository directory as those two, compiled to the same `.so` format all Samba VFS modules
+use — but there's no `vfs_snapshield.c` anywhere in Samba's public source tree, and no matching
+GitHub repository in 45Drives' org. Extracting the actual package shows a stripped ELF shared
+object with no debug symbols. Worth being precise about the difference: being a compiled `.so`
+is just how Samba's plugin architecture works for every VFS module, open or not — the
+meaningful distinction is that `samba-vfs-cephfs` and `samba-vfs-iouring` have real public
+source sitting right there in Samba's own repository, and `samba-vfs-snapshield` doesn't.
+
+And for sites that can't tolerate a single Samba server as a point of failure, the repository
+also carries `ctdb` — the standard clustered implementation of Samba's TDB database — meaning
+Samba itself can run in a clustered, highly-available configuration, the same story
+[iSCSI](/iscsi/) tells with its Pacemaker/Corosync-based clustered mode.
 
 ## Why that matters if you're evaluating storage
 

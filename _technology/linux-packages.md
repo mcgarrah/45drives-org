@@ -119,10 +119,14 @@ build is more actively developed — it's structural:
 
 - **`samba-vfs-snapshield`** — described in its own metadata as *"Samba VFS module for
   Snapshield integration."* Direct confirmation, from the package repository itself, of how
-  [SnapShield](/samba/) actually integrates with Samba. See
+  [SnapShield](/samba/) actually integrates with Samba. Extracting the actual package shows a
+  stripped, compiled `.so` with no matching source in either the 45Drives GitHub org or Samba's
+  own upstream tree — genuinely closed, unlike its neighbors below. See
   [Honeypot-Based Ransomware Detection](/ransomware-samba-tools/) for more.
 - **`samba-vfs-cephfs`** and **`samba-vfs-iouring`** — additional Samba VFS modules for direct
-  CephFS integration and `io_uring`-based async I/O. See [Samba](/samba/).
+  CephFS integration and `io_uring`-based async I/O. Also compiled `.so` files, but checked
+  directly against `samba-team/samba` on GitHub — both `vfs_ceph.c` and `vfs_io_uring.c` exist
+  in Samba's own public source tree, so these two genuinely are open. See [Samba](/samba/).
 - **`ctdb`** — clustered Samba, the same high-availability story [iSCSI](/iscsi/) already tells
   with its Pacemaker/Corosync mode. See [Samba](/samba/).
 - **`scst-dkms` and `scstadmin`** — independent confirmation of the [SCST](/iscsi/) subsystem
