@@ -28,20 +28,25 @@ The repository contains overlay profiles for both Rocky Linux 8 and 9 — 45Driv
 additions on top of the baseline OS STIG — along with a dated, full audit report showing the
 overlay actually being run and evaluated, not just a checklist that's never been executed.
 
-## A related tool worth knowing about
+## Related tools worth knowing about
 
 45Drives also tracks [`sedutil`](https://github.com/45Drives/sedutil), an open-source utility
 for managing **Self-Encrypting Drives (SEDs)** — hardware-level drive encryption, a common
-requirement alongside OS-level hardening in regulated environments.
+requirement alongside OS-level hardening in regulated environments. Separately, 45Drives
+publishes `45drives-audit-tool`, described in its own package metadata as running "a
+collection of system-tuning checks" and writing results to a TSV file — a lighter-weight,
+general system-health audit rather than a formal STIG check. Unlike the STIG overlay repo and
+`sedutil`, this one doesn't currently have a public source repository.
 
 ## Why that matters if you're evaluating storage
 
-- **Auditable, not just asserted.** The overlay and the audit evidence are both public —
-  nothing to take on faith.
+- **Auditable, not just asserted.** The STIG overlay and its audit evidence are both public —
+  nothing to take on faith for the core hardening claim.
 - **Built for the standard regulated customers actually have to meet**, not a generic
   "security-hardened" marketing claim.
-- **Consistent with everything else on this site**: even the compliance tooling is open
-  source, not a paid add-on module.
+- **Mostly, but not entirely, open.** The formal STIG tooling is public; a general-purpose
+  audit utility alongside it currently isn't — worth knowing which is which if "open source"
+  specifically is a requirement, not just "security-focused."
 
 ## Learn more
 

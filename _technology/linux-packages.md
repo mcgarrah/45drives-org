@@ -71,6 +71,27 @@ None of this means the software doesn't work — it means don't assume "in the r
 "on the newest release," and don't build new production deployments on `focal` or `el7`
 without knowing you're relying on an EOL'd base OS.
 
+## What's actually inside the repository — and a real find worth mentioning
+
+Reading the trixie repository's own package list directly (not just the module table on the
+[Houston UI page](/cockpit/)) turned up 22 distinct packages, including one worth calling out:
+[`cockpit-super-simple-setup`](https://repo.45drives.com/enterprise/debian/dists/trixie/main/binary-amd64/Packages),
+described in its own metadata as *"a cockpit module for simplifying 45Drives server setup."*
+If you've read the [Build Your Own](/build-your-own/) page, you'll know standing up this stack
+from scratch is real, documented friction — a purpose-built setup-simplification module is a
+direct, encouraging response to that problem, whatever its current adoption looks like.
+
+**Not everything in this "open source" repository is actually open source, though.** Checked
+package-by-package against the [45Drives GitHub org](https://github.com/orgs/45Drives/repositories):
+most packages here map to a public repository, but several — `45drives-audit-tool`,
+`45drives-tools`, `cockpit-alerts`, `cockpit-storage-encryption`, `cockpit-super-simple-setup`
+itself, `proxmox-kms-bridge`, `vault-dmkey`, `wireshield`, and the branding/hardware-variant
+packages — currently do not. That doesn't make them bad tools, and several of them wrap
+genuinely open technology underneath ([WireGuard](/wireguard/), LUKS, [OpenBao](/storage-encryption/)) —
+but the specific 45Drives integration code for these isn't itself public source right now,
+unlike the majority of what's covered on this site. Worth knowing the difference between
+"distributed alongside open source" and "is open source" before assuming either way.
+
 ## What's not covered
 
 No Fedora, openSUSE, or Alpine builds exist in this repository as of this writing.

@@ -28,6 +28,10 @@ that deploy Prometheus, Alertmanager, and Grafana together, pre-wired to collect
 from scratch, 45Drives automated the deployment of tools the broader industry already
 standardized on.
 
+There's also a lighter-weight `cockpit-alerts` module built directly into [Houston UI](/cockpit/)
+for surfacing alerts inside the dashboard itself — worth noting this one doesn't currently
+have a public source repository, unlike the Ansible roles and exporters below.
+
 That's backed by purpose-built Prometheus exporters 45Drives publishes for the parts of the
 stack that don't have off-the-shelf metrics already: [`zfs_exporter`](https://github.com/45Drives/zfs_exporter),
 [`autotier_exporter`](https://github.com/45Drives/autotier_exporter) for [autotier](/autotier/)
