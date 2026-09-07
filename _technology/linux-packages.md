@@ -36,12 +36,18 @@ per-distribution build to choose between.
 
 ## Get the repository set up
 
-45Drives publishes a setup script that configures the correct repository and signing key for
-your distribution automatically:
+45Drives publishes a setup script — [repo.45drives.com/setup](https://repo.45drives.com/setup) —
+that detects your distribution and configures the correct repository and signing key
+automatically:
 
 ```bash
 curl -sSL https://repo.45drives.com/setup | sudo bash
 ```
+
+You can also browse the repository directly at
+[repo.45drives.com](https://repo.45drives.com) if you'd rather inspect what's there before
+trusting a `curl | sudo bash` one-liner — a reasonable instinct, and the whole reason this
+page links the raw directory structure above instead of just describing it.
 
 See the [official 45Drives knowledge base article](https://knowledgebase.45drives.com/kb/kb45035-updating-to-newest-45drives-repositories/)
 for the full details, or [Build Your Own](/build-your-own/) for this exact step used in a real,
