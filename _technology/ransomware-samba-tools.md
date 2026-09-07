@@ -33,6 +33,15 @@ What it does show is that the underlying idea (honeypot files plus behavioral de
 storage-server layer, rather than only at the endpoint) has real, documented open-source roots
 that predate any single vendor's product, and that 45Drives was tracking that idea early.
 
+## A confirming detail from the package repository
+
+Separately from this repository, 45Drives' own package feed (both the Debian and RHEL builds)
+ships a package named `samba-vfs-snapshield` — described in its own metadata as *"Samba VFS
+module for Snapshield integration."* That's independent, public confirmation of the
+architecture described on the [Samba](/samba/) page: SnapShield is packaged and distributed as
+an actual Samba VFS module through the same repository infrastructure as everything else on
+this site, not a separate agent or appliance bolted on beside Samba.
+
 ## Why that matters if you're evaluating storage
 
 - **The concept is provable, not proprietary magic.** You can read exactly how a

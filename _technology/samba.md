@@ -26,7 +26,18 @@ control, and managing users happens from the web dashboard rather than hand-edit
 `smb.conf`. It's also architecturally significant for [SnapShield](https://www.45drives.com/software/snapshield-ransomware-protection/):
 the ransomware-detection product hooks into Samba's **VFS (Virtual File System) module**
 layer, meaning it inspects file activity as it passes through Samba itself, independent of
-whether the underlying filesystem is ZFS or Ceph.
+whether the underlying filesystem is ZFS or Ceph — confirmed directly in 45Drives' own package
+repository, which ships a `samba-vfs-snapshield` package described in its own metadata simply
+as *"Samba VFS module for Snapshield integration."*
+
+Two more VFS modules in that same repository round out the picture: `samba-vfs-cephfs`
+integrates Samba directly with [CephFS](/ceph/) at the VFS layer (rather than mounting CephFS
+and re-exporting it), and `samba-vfs-iouring` wires Samba into Linux's `io_uring` asynchronous
+I/O interface for lower-overhead file operations. And for sites that can't tolerate a single
+Samba server as a point of failure, the repository also carries `ctdb` — the standard clustered
+implementation of Samba's TDB database — meaning Samba itself can run in a clustered,
+highly-available configuration, the same story [iSCSI](/iscsi/) tells with its Pacemaker/
+Corosync-based clustered mode.
 
 ## Why that matters if you're evaluating storage
 

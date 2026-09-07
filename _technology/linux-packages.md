@@ -94,6 +94,55 @@ either. **Only two, checked directly, turned out to be genuinely compiled and un
 [Storage Encryption & Key Management](/storage-encryption/), [WireGuard](/wireguard/), and
 [STIG Hardening](/stig-hardening/) for the specifics on each.
 
+## Cross-referencing the RPM repository against the Debian one
+
+The Debian audit above only tells half the story. Pulling the same data from the RHEL-family
+side — parsing `repodata/primary.xml` from `el9/stable` the same way the Debian `Packages`
+file was parsed — turns up **150 distinct packages**, nearly seven times the 22 found in
+trixie. That gap is worth explaining rather than just noting, because it's not a sign the RPM
+build is more actively developed — it's structural:
+
+- **RHEL-family distributions don't ship ZFS in their own repositories at all**, because ZFS's
+  CDDL license is considered incompatible with the GPL-licensed Linux kernel by Red Hat and the
+  major RHEL derivatives. Debian and Ubuntu, by contrast, already carry current native ZFS,
+  Ceph, and Samba packages (via `contrib`/`main`) that 45Drives' Debian build can simply depend
+  on. The RPM build has no equivalent to lean on, so 45Drives packages the entire stack itself
+  — ZFS, Ceph, Samba (including its Active Directory/DC components), and their dependencies —
+  directly in its own repository.
+- Cross-referencing package **names** confirms this: of Debian trixie's 22 packages, all but
+  two — `cockpit-45drives-branding` and `proxmox-kms-bridge` — also exist on el9. (The
+  `proxmox-kms-bridge` gap makes sense on its own: Proxmox VE is Debian-based, so there's no
+  RHEL build to ship it for.) The 45Drives-authored package set is essentially the same across
+  both families; el9 is simply carrying a lot more upstream software alongside it.
+
+**New, real finds surfaced only by checking the RPM side directly:**
+
+- **`samba-vfs-snapshield`** — described in its own metadata as *"Samba VFS module for
+  Snapshield integration."* Direct confirmation, from the package repository itself, of how
+  [SnapShield](/samba/) actually integrates with Samba. See
+  [Honeypot-Based Ransomware Detection](/ransomware-samba-tools/) for more.
+- **`samba-vfs-cephfs`** and **`samba-vfs-iouring`** — additional Samba VFS modules for direct
+  CephFS integration and `io_uring`-based async I/O. See [Samba](/samba/).
+- **`ctdb`** — clustered Samba, the same high-availability story [iSCSI](/iscsi/) already tells
+  with its Pacemaker/Corosync mode. See [Samba](/samba/).
+- **`scst-dkms` and `scstadmin`** — independent confirmation of the [SCST](/iscsi/) subsystem
+  claim already made on the iSCSI page, this time straight from the kernel-module package
+  itself rather than inferred from `cockpit-file-sharing`'s source.
+- **`rclone`** — a real, well-known open-source cloud-storage sync tool, bundled for
+  convenience alongside the [S3 / RADOS Gateway](/rados-gateway/) tooling. Not a 45Drives
+  creation, just a genuinely useful inclusion.
+- A previously-undocumented **`stable`/`testing` channel split** exists under each RHEL version
+  directory (e.g. `el9/stable/`, `el9/testing/`) — this page and its setup instructions track
+  the `stable` channel, which is also what the official setup script defaults to.
+
+**One assumption this check disproved:** it would be reasonable to guess the RPM build lags
+the Debian build in package versions, the same way the OS versions themselves lag (see below).
+Checked directly, that's not true — `repodata/primary.xml` retains every historically-published
+build (unlike Debian's `Packages` file, which only exposes the current one), and comparing the
+*newest* el9 build against trixie shows them landing on the same versions: `cockpit-alerts`
+is `4.0.25` on both, `45drives-audit-tool` is `2.2.7` on both. The RPM repository's metadata
+just happens to expose more history, not less currency.
+
 ## What's not covered
 
 No Fedora, openSUSE, or Alpine builds exist in this repository as of this writing.

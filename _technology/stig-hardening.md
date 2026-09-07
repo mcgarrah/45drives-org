@@ -35,7 +35,11 @@ for managing **Self-Encrypting Drives (SEDs)** — hardware-level drive encrypti
 requirement alongside OS-level hardening in regulated environments. Separately, 45Drives
 publishes `45drives-audit-tool`, described in its own package metadata as running "a
 collection of system-tuning checks" and writing results to a TSV file — a lighter-weight,
-general system-health audit rather than a formal STIG check. Unlike the STIG overlay repo and
+general system-health audit rather than a formal STIG check. Earlier published versions of
+that same package (checked directly against the RPM repository's version history) describe it
+more specifically as *"a small Rust prototype"* — later revisions dropped the word
+"prototype" from the description, though nothing suggests the implementation language
+changed. Unlike the STIG overlay repo and
 `sedutil`, this one doesn't have a public source repository — and unlike most of the
 undocumented packages elsewhere on this site, this one genuinely is opaque: extracting the
 actual `.deb` shows a stripped, compiled ELF binary with no accompanying source, not a

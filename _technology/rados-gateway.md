@@ -26,6 +26,14 @@ the cluster or on a dedicated gateway node. [Houston UI](/cockpit/)'s `cockpit-f
 module lists Ceph RGW as a supported S3 backend for bucket and user management, alongside
 Samba and NFS in the same dashboard.
 
+## A real client tool in the same repository
+
+45Drives' own package repository also carries [`rclone`](https://rclone.org) — the
+widely-used, genuinely popular open-source "rsync for cloud storage" — right alongside the
+RGW-related packages. It's not a 45Drives creation, just a real, well-regarded third-party
+tool bundled for convenience, and a practical way to actually move data into or out of an RGW
+bucket from the command line once it's running.
+
 ## Why that matters if you're evaluating storage
 
 - **No cloud lock-in for S3-native tooling.** If your backup software, data pipeline, or CI
